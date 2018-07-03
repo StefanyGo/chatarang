@@ -3,10 +3,21 @@ import Main from './Main'
 import './App.css'
 
 class App extends Component {
+  constructor() {
+    super() 
+
+    this.state = {
+      user : {
+        uid: 'sdfe23434asddf',
+        displayName: 'Davey',
+        email: 'davey@singing.org',
+      }
+    }
+  }
   render() {
     return (
       <div className="App">
-        <Main />
+        <Main user={this.state.user} />
       </div>
     )
   }
