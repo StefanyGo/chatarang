@@ -36,15 +36,16 @@ class Chat extends Component {
 
     addMessage = (body) => {
         const messages = [...this.state.messages]
+        const user = {
+            uid: 'sdfe23434asddf',
+            displayName: 'Stefany',
+            email: 'stefany@singing.org',
+        }
 
         messages.push({
             id: Date.now(),
-            user: {
-                uid: 'sdfe23434asddf',
-                displayName: 'Stefany',
-                email: 'stefany@singing.org',
-            },
-            body: body,
+            user,
+            body,
         })
 
         this.setState({messages: messages })
