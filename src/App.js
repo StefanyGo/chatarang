@@ -1,19 +1,23 @@
 import React, { Component } from 'react'
+
+import './App.css'
 import Main from './Main'
 import SignIn from './SignIn'
-import './App.css'
 
 class App extends Component {
   constructor() {
-    super() 
+    super()
+
+    const user = JSON.parse(localStorage.getItem('user'))
 
     this.state = {
-      user : {},
+      user: user || {},
     }
   }
 
   handleAuth = (user) => {
-    this.setState({ user: user })
+    this.setState({ user })
+    localStorage.setItem('user', JSON.stringify(user))
   }
 
   signedIn = () => {
@@ -21,7 +25,8 @@ class App extends Component {
   }
 
   signOut = () => {
-    this.setState({user: {}})
+    this.setState({ user: {} })
+    localStorage.removeItem('user')
   }
 
   render() {
@@ -29,13 +34,12 @@ class App extends Component {
       <div className="App">
         {
           this.signedIn()
-          ? <Main
-              user={this.state.user} 
-              signOut={this.signOut}
-            />
-          : <SignIn handleAuth={this.handleAuth} />
+            ? <Main
+                user={this.state.user}
+                signOut={this.signOut}
+              />
+            : <SignIn handleAuth={this.handleAuth} />
         }
-        
       </div>
     )
   }
