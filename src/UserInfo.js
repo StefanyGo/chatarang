@@ -29,7 +29,7 @@ const styles = {
   user: {
     flex: 1,
     overflowX: 'hidden',
-    textOverflow: 'elipsis'
+    textOverflow: 'ellipsis'
   }
 }
 
